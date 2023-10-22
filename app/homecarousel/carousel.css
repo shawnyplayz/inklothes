@@ -1,0 +1,13 @@
+
+.carousel_height{
+    height : 50rem;
+}
+.carousel .slider-wrapper{
+    width: 100%;
+   
+}
+@media only screen and (max-width: 640px) {
+    .slider_car{
+        width: 100vw;
+    }
+}
