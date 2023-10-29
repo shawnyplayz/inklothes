@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import Slider from "../homecarousel/Slider";
+import Slider from "../homecarousel/Sliders";
 import axios from "axios";
 import Carousel from "react-multi-carousel";
 import Image from "next/image";
@@ -45,7 +45,7 @@ function FeaturedProducts() {
   return (
     <div className="flex justify-center items-center flex-col gap-4 my-8">
       <div className="font-extrabold text-2xl">Featured Products</div>
-      <Carousel responsive={responsive}>
+      {/* <Carousel responsive={responsive}>
         {content?.map((el) => {
           debugger;
           return (
@@ -54,7 +54,7 @@ function FeaturedProducts() {
             </div>
           );
         })}
-      </Carousel>
+      </Carousel> */}
     </div>
   );
 }

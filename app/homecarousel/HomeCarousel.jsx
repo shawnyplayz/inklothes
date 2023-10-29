@@ -3,7 +3,8 @@ import React, { Component } from "react";
 import "./carousel.css";
 import Image from "next/image";
 import axios from "axios";
-import Slider from "./Slider";
+import Slider from "./Sliders";
+import Sliders from "./Sliders";
 
 class HomeCarousel extends Component {
   constructor(props) {
@@ -84,7 +85,7 @@ class HomeCarousel extends Component {
             );
           })}
         </Carousel> */}
-        <Slider content={this.state.content} />
+        <Sliders content={this.state.content} />
       </>
     );
   }
