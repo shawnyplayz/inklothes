@@ -1,9 +1,10 @@
 "use client";
+import "react-multi-carousel/lib/styles.css";
 import React, { useEffect, useState } from "react";
-import Slider from "../homecarousel/Sliders";
 import axios from "axios";
 import Carousel from "react-multi-carousel";
 import Image from "next/image";
+import './featuredProducts.css';
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -26,12 +27,13 @@ const responsive = {
 function FeaturedProducts() {
   const [content, setContent] = useState([]);
   useEffect(() => {
+    
     let API = process.env.NEXT_PUBLIC_UAT_URL;
     let dupliContent = [];
     axios
       .get(`${API}/cms`)
       .then((response) => {
-        const setData = response?.data?.carousel;
+        const setData = response?.data?.featuredProducts;
         setData.map((el) => {
           dupliContent.push(el);
         });
@@ -43,19 +45,43 @@ function FeaturedProducts() {
   }, []);
 
   return (
-    <div className="flex justify-center items-center flex-col gap-4 my-8">
-      <div className="font-extrabold text-2xl">Featured Products</div>
-      {/* <Carousel responsive={responsive}>
-        {content?.map((el) => {
-          debugger;
-          return (
-            <div className="h-96 w-full">
-              <Image src={el} alt="trade" layout="fill" />
-            </div>
-          );
-        })}
-      </Carousel> */}
-    </div>
+    <>
+      {
+        content.length != 0 ?
+          <div className="flex justify-center items-center flex-col gap-4 my-8">
+            <div className="font-extrabold text-2xl">Featured Products</div>
+            <Carousel
+              responsive={responsive}
+              autoPlay={false}
+              swipeable={true}
+              draggable={true}
+              // showDots={true}
+              infinite={true}
+              // partialVisible={false}
+              containerClass="carousel-container"
+              itemClass="carousel-item"
+            >
+              {content?.map((el, index) => {
+                return (
+                  <div className="slider">
+                    <Image
+                      src={el?.productImages[0]}
+                      alt="featured Tattoo Sleeves"
+                      // width={100}
+                      // height={100}
+                      fill
+                    />
+                  </div>
+
+                )
+              })}
+            </Carousel>
+
+          </div>
+          :
+          <div />
+      }
+    </>
   );
 }
 

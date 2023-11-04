@@ -1,0 +1,23 @@
+.carousel-container {
+    width: 100%;
+   }
+   .slider {
+    margin:0 20px;
+    overflow:"hidden";
+    padding:2rem 0;
+  }
+  
+  .slider img {
+    width: 100%;
+    border-radius:20px;
+    padding: 1rem;
+
+  }
+  
+  .react-multi-carousel-list {
+  padding: 0rem 0 2rem 0;
+  }
+  .react-multi-carousel-track {
+    height: 25rem;
+
+  }

@@ -26,7 +26,7 @@ function Benefits() {
   return (
     <div className="flex flex-row justify-evenly w-full">
       {benfitsArray?.map((el) => {
-        debugger;
+        
         return (
           <div className="flex flex-row my-8 items-center gap-5">
             <Image src={el.icon} />
