@@ -5,6 +5,7 @@ import axios from "axios";
 import Carousel from "react-multi-carousel";
 import Image from "next/image";
 import './featuredProducts.css';
+import Card from "@/components/Card/Card";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -63,15 +64,7 @@ function FeaturedProducts() {
             >
               {content?.map((el, index) => {
                 return (
-                  <div className="slider">
-                    <Image
-                      src={el?.productImages[0]}
-                      alt="featured Tattoo Sleeves"
-                      // width={100}
-                      // height={100}
-                      fill
-                    />
-                  </div>
+                    <Card {...el}/>
 
                 )
               })}

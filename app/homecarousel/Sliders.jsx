@@ -22,8 +22,8 @@ class Sliders extends Component {
       let asd = [];
       this.props.content?.map((el) => {
         asd.push({
-          original: el?.img,
-          thumbnail: el?.img,
+          original: el?.url,
+          thumbnail: el?.url,
         });
       });
       this.setState({
