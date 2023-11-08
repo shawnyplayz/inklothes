@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Carousel from "react-multi-carousel";
 import Image from "next/image";
-import './featuredProducts.css';
+import "./featuredProducts.css";
 import Card from "@/components/Card/Card";
 const responsive = {
   superLargeDesktop: {
@@ -28,7 +28,6 @@ const responsive = {
 function FeaturedProducts() {
   const [content, setContent] = useState([]);
   useEffect(() => {
-    
     let API = process.env.NEXT_PUBLIC_UAT_URL;
     let dupliContent = [];
     axios
@@ -47,33 +46,33 @@ function FeaturedProducts() {
 
   return (
     <>
-      {
-        content.length != 0 ?
-          <div className="flex justify-center items-center flex-col gap-4 my-8">
-            <div className="font-extrabold text-2xl">Featured Products</div>
-            <Carousel
-              responsive={responsive}
-              autoPlay={false}
-              swipeable={true}
-              draggable={true}
-              // showDots={true}
-              infinite={true}
-              // partialVisible={false}
-              containerClass="carousel-container"
-              itemClass="carousel-item"
-            >
-              {content?.map((el, index) => {
-                return (
-                    <Card {...el}/>
-
-                )
-              })}
-            </Carousel>
-
-          </div>
-          :
-          <div />
-      }
+      {content.length != 0 ? (
+        <div className="flex justify-center items-center flex-col gap-4 my-8">
+          <div className="font-extrabold text-2xl">Featured Products</div>
+          <Carousel
+            responsive={responsive}
+            autoPlay={false}
+            swipeable={true}
+            draggable={true}
+            infinite={true}
+            partialVisible={false}
+            ssr
+            containerClass="carousel-container"
+            itemClass="carousel-item"
+            centerMode={true}
+          >
+            {content?.map((el, index) => {
+              return (
+                <div className="slider">
+                  <Card {...el} />
+                </div>
+              );
+            })}
+          </Carousel>
+        </div>
+      ) : (
+        <div />
+      )}
     </>
   );
 }
