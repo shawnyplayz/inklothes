@@ -48,27 +48,29 @@ function FeaturedProducts() {
     <>
       {content.length != 0 ? (
         <div className="flex justify-center items-center flex-col gap-4 my-8">
-          <div className="font-extrabold text-2xl">Featured Products</div>
-          <Carousel
-            responsive={responsive}
-            autoPlay={false}
-            swipeable={true}
-            draggable={true}
-            infinite={true}
-            partialVisible={false}
-            ssr
-            containerClass="carousel-container"
-            itemClass="carousel-item"
-            centerMode={true}
-          >
-            {content?.map((el, index) => {
-              return (
-                <div className="slider">
-                  <Card {...el} />
-                </div>
-              );
-            })}
-          </Carousel>
+          <div className="font-bold text-3xl">Featured Products</div>
+          <div className="flex px-48 w-full">
+            <Carousel
+              responsive={responsive}
+              autoPlay={false}
+              swipeable={true}
+              draggable={true}
+              infinite={true}
+              partialVisible={false}
+              ssr
+              containerClass="carousel-container"
+              itemClass="carousel-item"
+              centerMode={true}
+            >
+              {content?.map((el, index) => {
+                return (
+                  <div className="slider">
+                    <Card {...el} />
+                  </div>
+                );
+              })}
+            </Carousel>
+          </div>
         </div>
       ) : (
         <div />
