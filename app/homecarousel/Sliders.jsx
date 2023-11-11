@@ -34,7 +34,7 @@ class Sliders extends Component {
   render() {
     return (
       <div className="flex">
-        {this.state.content.length != 0 ? (
+        {this.state.content?.length != 0 ? (
           <ImageGallery
             items={this.state.content}
             autoPlay
@@ -49,9 +49,7 @@ class Sliders extends Component {
           <></>
         )}
       </div>
-     
     );
   }
 }
 export default Sliders;
-

@@ -25,28 +25,33 @@ const responsive = {
     items: 1,
   },
 };
-function FeaturedProducts() {
-  const [content, setContent] = useState([]);
+function FeaturedProducts(props) {
+  const [content, setContent] = useState(props?.content);
+
   useEffect(() => {
-    let API = process.env.NEXT_PUBLIC_UAT_URL;
-    let dupliContent = [];
-    axios
-      .get(`${API}/cms`)
-      .then((response) => {
-        const setData = response?.data?.featuredProducts;
-        setData.map((el) => {
-          dupliContent.push(el);
-        });
-        setContent([...dupliContent]);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
+    setContent(props.content);
+  }, [props?.content]);
+
+  // useEffect(() => {
+  //   let API = process.env.NEXT_PUBLIC_UAT_URL;
+  //   let dupliContent = [];
+  //   axios
+  //     .get(`${API}/cms`)
+  //     .then((response) => {
+  //       const setData = response?.data?.featuredProducts;
+  //       setData.map((el) => {
+  //         dupliContent.push(el);
+  //       });
+  //       setContent([...dupliContent]);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching data:", error);
+  //     });
+  // }, []);
 
   return (
     <>
-      {content.length != 0 ? (
+      {content?.featuredProducts?.length != 0 ? (
         <div className="flex justify-center items-center flex-col gap-4 my-8">
           <div className="font-bold text-3xl">Featured Products</div>
           <div className="flex px-48 w-full">
@@ -62,13 +67,17 @@ function FeaturedProducts() {
               itemClass="carousel-item"
               centerMode={true}
             >
-              {content?.map((el, index) => {
-                return (
-                  <div className="slider">
-                    <Card {...el} />
-                  </div>
-                );
-              })}
+              {content?.featuredProducts ? (
+                content.featuredProducts.map((el, index) => {
+                  return (
+                    <div className="slider">
+                      <Card {...el} />
+                    </div>
+                  );
+                })
+              ) : (
+                <></>
+              )}
             </Carousel>
           </div>
         </div>

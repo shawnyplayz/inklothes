@@ -13,28 +13,31 @@ class HomeCarousel extends Component {
       content: [],
     };
   }
-  componentDidMount = () => {
-    let API = process.env.NEXT_PUBLIC_UAT_URL;
-    let dupliContent = [];
-    axios
-      .get(`${API}/cms`)
-      .then((response) => {
-        const setData = response?.data?.carousel;
-        setData.map((el) => {
-          dupliContent.push(el);
-        });
-        this.setState({
-          content: [...dupliContent],
-        });
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+  componentDidUpdate = (prevProps, prevState) => {
+    if (this.props != prevProps) {
+      console.log("this.props.content", this.props.content);
+    }
+    // let API = process.env.NEXT_PUBLIC_UAT_URL;
+    // let dupliContent = [];
+    // axios
+    //   .get(`${API}/cms`)
+    //   .then((response) => {
+    //     const setData = response?.data?.carousel;
+    //     setData.map((el) => {
+    //       dupliContent.push(el);
+    //     });
+    //     this.setState({
+    //       content: [...dupliContent],
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error fetching data:", error);
+    //   });
   };
   render() {
     return (
       <>
-        <Sliders content={this.state.content} />
+        <Sliders content={this.props?.content?.carousel} />
       </>
     );
   }

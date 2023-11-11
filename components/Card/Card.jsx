@@ -11,8 +11,7 @@ function Card(props) {
           alt="featured Tattoo Sleeves"
           width={100}
           height={100}
-          // fill
-          className="innerCards relative h-48 w-96 "
+          className="innerCards relative h-48 w-96 object-contain"
         />
       </div>
 
