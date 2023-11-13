@@ -2,9 +2,10 @@ import Image from "next/image";
 import React from "react";
 import "./Card.css";
 function Card(props) {
+  debugger;
+  console.log("props", props);
   return (
     <div className="flex flex-col rounded shadow-lg max-w-xs h-full ">
-      {/* <img className="w-full" src={props.img} alt="Sunset in the mountains"/> */}
       <div className="p-4 flex justify-center h-3/5">
         <Image
           src={props?.productImages[0]?.secure_url}

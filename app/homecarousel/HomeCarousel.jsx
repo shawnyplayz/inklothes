@@ -17,22 +17,6 @@ class HomeCarousel extends Component {
     if (this.props != prevProps) {
       console.log("this.props.content", this.props.content);
     }
-    // let API = process.env.NEXT_PUBLIC_UAT_URL;
-    // let dupliContent = [];
-    // axios
-    //   .get(`${API}/cms`)
-    //   .then((response) => {
-    //     const setData = response?.data?.carousel;
-    //     setData.map((el) => {
-    //       dupliContent.push(el);
-    //     });
-    //     this.setState({
-    //       content: [...dupliContent],
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error fetching data:", error);
-    //   });
   };
   render() {
     return (
