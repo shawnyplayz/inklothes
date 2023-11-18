@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 import "./Card.css";
 function Card(props) {
-  debugger;
   console.log("props", props);
   return (
     <div className="flex flex-col rounded shadow-lg max-w-xs h-full ">

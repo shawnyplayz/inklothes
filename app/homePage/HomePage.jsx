@@ -4,6 +4,7 @@ import Benefits from "../benefits/Benefits";
 import FeaturedProducts from "../featuredProducts/FeaturedProducts";
 import Categories from "../categories/Categories";
 import HomeCarousel from "../homecarousel/HomeCarousel";
+import Pros from "../pros/Pros";
 
 function HomePage() {
   const [content, setContent] = useState(null);
@@ -36,6 +37,7 @@ function HomePage() {
       <Benefits />
       <FeaturedProducts content={content} />
       <Categories content={content} />
+      <Pros content={content} />
     </div>
   );
 }

@@ -1,0 +1,15 @@
+.image-slider {
+    display: flex;
+    overflow: hidden;
+  }
+  
+  img {
+    width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  img.active {
+    opacity: 1;
+  }
+  
