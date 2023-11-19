@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 // import NavLogo from "../../public/innocursor.svg";
 import Essentials from "../../essentials.json";
-import { BsSearch, BsBag } from "react-icons/Bs";
+import { BsSearch, BsBag } from "react-icons/bs";
 import { RxAvatar } from "react-icons/rx";
 import { AiOutlineDown, AiOutlineHeart } from "react-icons/ai";
 
