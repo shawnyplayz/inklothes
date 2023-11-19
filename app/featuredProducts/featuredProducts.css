@@ -2,7 +2,7 @@
     width: 100%;
    }
    .slider {
-    margin:0 20px;
+    /* margin:0 20px; */
     overflow:"hidden";
     height: -webkit-fill-available;
     /* display: flex; */
@@ -15,7 +15,7 @@
     padding: 1rem;
   }
   .react-multi-carousel-list {
-  padding: 0rem 0 2rem 0;
+  padding: 0rem 0 2rem 20rem;
   }
   .react-multi-carousel-track {
     height: 25rem;

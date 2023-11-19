@@ -29,8 +29,8 @@ function ProsCard(props) {
   }, []);
 
   return (
-    <div className="flex flex-row gap-12">
-      <div className="flex w-2/3">
+    <div className="flex flex-row gap-12 w-full">
+      <div className="flex w-1/2">
         {prosImages?.length != 0 ? (
           <ReactImageGallery
             items={prosImages}
@@ -46,7 +46,7 @@ function ProsCard(props) {
           <></>
         )}
       </div>
-      <div className="flex flex-col rounded shadow-lg max-w-xs h-full w-2/3 ">
+      <div className="flex flex-col rounded shadow-lg h-full w-1/2 ">
         <div className="px-6 py-4">
           <p className="text-black text-lg">{props?.content?.pros[0]?.pros}</p>
         </div>

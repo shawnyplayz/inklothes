@@ -53,7 +53,7 @@ function FeaturedProducts(props) {
       {content?.featuredProducts?.length != 0 ? (
         <div className="flex justify-center items-center flex-col gap-4 my-8">
           <div className="font-bold text-3xl">Featured Products</div>
-          <div className="flex px-48 w-full">
+          <div className="flex w-full">
             <Carousel
               responsive={responsive}
               autoPlay={false}
