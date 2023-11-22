@@ -5,13 +5,13 @@ function Card(props) {
   console.log("props", props);
   return (
     <div className="flex flex-col rounded shadow-lg max-w-xs h-full ">
-      <div className="p-4 flex justify-center h-3/5">
+      <div className="flex justify-center h-72">
         <Image
           src={props?.productImages[0]?.secure_url}
           alt="featured Tattoo Sleeves"
           width={100}
           height={100}
-          className="innerCards relative h-48 w-96 object-contain"
+          className="innerCards relative h-auto w-full object-contain"
         />
       </div>
 

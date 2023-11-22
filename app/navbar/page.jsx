@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import Image from "next/image";
-// import NavLogo from "../../public/innocursor.svg";
+import NavLogo from "../../public/inklothes_logo.svg";
 import Essentials from "../../essentials.json";
 import { BsSearch, BsBag } from "react-icons/bs";
 import { RxAvatar } from "react-icons/rx";
@@ -37,16 +37,16 @@ function Navbar() {
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 h-24">
         <div className="flex gap-12 justify-center items-center font-normal">
           <Link href="/" className="flex items-center">
-            {/* <Image
-            src={NavLogo}
-            className="h-10 w-16"
-            alt="logo"
-            loading="eager"
-            priority={true}
-          /> */}
-            <span className="self-center text-3xl font-bold whitespace-nowrap">
+            <Image
+              src={NavLogo}
+              className="h-10 w-16"
+              alt="logo"
+              loading="eager"
+              priority={true}
+            />
+            {/* <span className="self-center text-3xl font-bold whitespace-nowrap">
               {Essentials.name}
-            </span>
+            </span> */}
           </Link>
           <div className="flex items-center justify-center gap-2 mt-1 font-semibold text-xl">
             Categories
