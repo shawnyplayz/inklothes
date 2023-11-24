@@ -5,12 +5,14 @@ import FeaturedProducts from "../featuredProducts/FeaturedProducts";
 import Benefits from "../benefits/Benefits";
 import Categories from "../categories/Categories";
 import HomePage from "../homePage/HomePage";
+import Footer from "../footer/page";
 
 function Main() {
   return (
     <div className="">
       <Navbar />
       <HomePage />
+      <Footer />
     </div>
   );
 }
