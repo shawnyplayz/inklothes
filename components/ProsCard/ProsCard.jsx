@@ -48,7 +48,9 @@ function ProsCard(props) {
       </div>
       <div className="flex flex-col rounded shadow-lg h-full w-1/2 ">
         <div className="px-6 py-4">
-          <p className="text-black text-lg">{props?.content?.pros[0]?.pros}</p>
+          <p className="text-black text-lg">
+            {props?.content?.pros && props?.content?.pros[0]?.pros}
+          </p>
         </div>
       </div>
     </div>

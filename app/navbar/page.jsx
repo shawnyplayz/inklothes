@@ -1,14 +1,49 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import NavLogo from "../../public/Artboard.svg";
 import Essentials from "../../essentials.json";
 import { BsSearch, BsBag } from "react-icons/bs";
 import { RxAvatar } from "react-icons/rx";
 import { AiOutlineDown, AiOutlineHeart } from "react-icons/ai";
+import { Button, Dropdown, Menu } from "antd";
+import "./navbar.css";
+function Navbar(props) {
+  // const items = [
+  //   {
+  //     key: "3",
+  //     label: (
+  //       <a
+  //         target="_blank"
+  //         rel="noopener noreferrer"
+  //         href="https://www.luohanacademy.com"
+  //       >
+  //         3rd menu item
+  //       </a>
+  //     ),
+  //   },
+  // ];
+  const menuStyle = {
+    // Your custom styles here
+    backgroundColor: "#f0f0f0",
+    border: "1px solid #d9d9d9",
+    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
+  };
 
-function Navbar() {
+  const menu = (
+    <Menu style={menuStyle} className="custom-menu">
+      <Menu.Item key="1">Option 1</Menu.Item>
+      <Menu.Item key="2">Option 2</Menu.Item>
+      <Menu.Item key="3">Option 3</Menu.Item>
+    </Menu>
+  );
+  const [openCategories, setOpenCategories] = useState(false);
+  const [result, setResult] = useState(null);
+  useEffect(() => {
+    setResult(props?.content?.navbarCategories);
+  }, [props?.content]);
+
   const navbarOptions = [
     {
       link: "/catalogue",
@@ -56,9 +91,74 @@ function Navbar() {
           </Link>
           <div className="flex gap-2 -mt-4 font-semibold text-xl">
             Categories
-            <button>
-              <AiOutlineDown />
-            </button>
+            <div className="">
+              <Button
+                onClick={() => setOpenCategories(!openCategories)}
+                className="border-none text-xl p-0 font-extrabold hover:cursor-pointer"
+              >
+                <AiOutlineDown />
+              </Button>
+              <div
+                className={`text-black -ml-48 absolute bg-gray-50 min-w-fit shadow-lg z-10 rounded-xl mt-3 ${
+                  openCategories ? "block" : "hidden"
+                } lg:items-center`}
+              >
+                <div className="flex flex-row p-4 gap-10">
+                  {/* Categories */}
+                  <div className="flex flex-col">
+                    <div className="text-2xl font-bold my-2">Categories</div>
+                    <ul className="flex flex-col p-2">
+                      {result?.categories?.map((el) => (
+                        <>
+                          <li className="text-black text-base my-1 hover:transform hover:scale-110 hover:transition-transform hover:cursor-pointer">
+                            {el}
+                          </li>
+                        </>
+                      ))}
+                    </ul>
+                  </div>
+                  {/* Themes */}
+                  <div className="flex flex-col">
+                    <div className="text-2xl font-bold my-2">Themes</div>
+                    <ul className="flex flex-col p-2">
+                      {result?.theme?.map((el) => (
+                        <>
+                          <li className="text-black text-base my-1  hover:transform hover:scale-110 hover:transition-transform hover:cursor-pointer">
+                            {el.genre}
+                          </li>
+                        </>
+                      ))}
+                    </ul>
+                  </div>
+                  {/* Skin Tone */}
+                  <div className="flex flex-col">
+                    <div className="text-2xl font-bold my-2">Skin Tone</div>
+                    <ul className="flex flex-col p-2">
+                      {result?.skinTone?.map((el) => (
+                        <>
+                          <li className="text-black text-base my-1 hover:transform hover:scale-110 hover:transition-transform hover:cursor-pointer">
+                            {el?._id}
+                          </li>
+                        </>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <Dropdown
+              menu={{ menu }}
+              placement="bottomRight"
+              arrow
+              open={openCategories}
+            >
+              <Button
+                onClick={() => setOpenCategories(!openCategories)}
+                className="border-none text-xl p-0 font-extrabold"
+              >
+                <AiOutlineDown />
+              </Button>
+            </Dropdown> */}
           </div>
         </div>
         <button
