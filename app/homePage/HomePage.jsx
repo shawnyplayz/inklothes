@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Benefits from "../benefits/Benefits";
-import FeaturedProducts from "../featuredProducts/FeaturedProducts";
-import Categories from "../categories/Categories";
+import FeaturedProducts from "../../components/featuredProducts/FeaturedProducts";
+import Categories from "../../components/categories/Categories";
 import HomeCarousel from "../homecarousel/HomeCarousel";
 import Pros from "../pros/Pros";
-import BestSellers from "../bestSellers/BestSellers";
+import BestSellers from "../../components/bestSellers/BestSellers";
 
 function HomePage(props) {
   // const [content, setContent] = useState(null);

@@ -24,20 +24,7 @@ function Navbar(props) {
   //     ),
   //   },
   // ];
-  const menuStyle = {
-    // Your custom styles here
-    backgroundColor: "#f0f0f0",
-    border: "1px solid #d9d9d9",
-    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
-  };
 
-  const menu = (
-    <Menu style={menuStyle} className="custom-menu">
-      <Menu.Item key="1">Option 1</Menu.Item>
-      <Menu.Item key="2">Option 2</Menu.Item>
-      <Menu.Item key="3">Option 3</Menu.Item>
-    </Menu>
-  );
   const [openCategories, setOpenCategories] = useState(false);
   const [result, setResult] = useState(null);
   useEffect(() => {
@@ -90,7 +77,13 @@ function Navbar(props) {
             </span> */}
           </Link>
           <div className="flex gap-2 -mt-4 font-semibold text-xl">
-            Categories
+            <Link
+              href={"/categories"}
+              className="block py-2 mx-1 text-2xl text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent z-10"
+              aria-current="page"
+            >
+              Categories{" "}
+            </Link>
             <div className="">
               <Button
                 onClick={() => setOpenCategories(!openCategories)}

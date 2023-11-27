@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import Card from "@/components/Card/Card";
 import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
-import "../featuredProducts/featuredProducts.css";
+import "../../components/featuredProducts/featuredProducts.css";
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.

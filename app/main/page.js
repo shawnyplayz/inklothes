@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../navbar/page";
 import HomeCarousel from "../homecarousel/HomeCarousel";
-import FeaturedProducts from "../featuredProducts/FeaturedProducts";
+import FeaturedProducts from "../../components/featuredProducts/FeaturedProducts";
 import Benefits from "../benefits/Benefits";
-import Categories from "../categories/Categories";
+import Categories from "../../components/categories/Categories";
 import HomePage from "../homePage/HomePage";
 import Footer from "../footer/page";
 
