@@ -7,10 +7,10 @@ import Benefits from "../benefits/Benefits";
 import Categories from "../../components/categories/Categories";
 import HomePage from "../homePage/HomePage";
 import Footer from "../footer/page";
-
+import { useAPIStore } from "../../store/ApiData";
 function Main() {
   const [content, setContent] = useState(null);
-
+  const { categoriesNav, addCategoriesNav } = useAPIStore();
   useEffect(() => {
     getData();
   }, []);
@@ -26,6 +26,7 @@ function Main() {
         .then(function (data) {
           // `data` is the parsed version of the JSON returned from the above endpoint.
 
+          addCategoriesNav(data?.navbarCategories);
           setContent(data);
           return data;
         });

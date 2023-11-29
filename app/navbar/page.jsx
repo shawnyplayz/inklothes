@@ -9,6 +9,8 @@ import { RxAvatar } from "react-icons/rx";
 import { AiOutlineDown, AiOutlineHeart } from "react-icons/ai";
 import { Button, Dropdown, Menu } from "antd";
 import "./navbar.css";
+import { useAPIStore } from "../../store/ApiData";
+
 function Navbar(props) {
   // const items = [
   //   {
@@ -27,10 +29,32 @@ function Navbar(props) {
 
   const [openCategories, setOpenCategories] = useState(false);
   const [result, setResult] = useState(null);
-  useEffect(() => {
-    setResult(props?.content?.navbarCategories);
-  }, [props?.content]);
+  const [content, setContent] = useState(null);
+  // useEffect(() => {
+  //   setResult(props?.content?.navbarCategories);
+  // }, [props?.content]);
 
+  useEffect(() => {
+    getNavContent();
+  }, []);
+  const getNavContent = async () => {
+    let API = process.env.NEXT_PUBLIC_UAT_URL;
+    try {
+      await fetch(`${API}/navbarContent`)
+        .then(function (response) {
+          // The response is a Response instance.
+          // You parse the data into a useable format using `.json()`
+          return response.json();
+        })
+        .then(function (data) {
+          // `data` is the parsed version of the JSON returned from the above endpoint.
+          setContent(data?.navbarCategories);
+          return data;
+        });
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
   const navbarOptions = [
     {
       link: "/catalogue",
@@ -101,7 +125,7 @@ function Navbar(props) {
                   <div className="flex flex-col">
                     <div className="text-2xl font-bold my-2">Categories</div>
                     <ul className="flex flex-col p-2">
-                      {result?.categories?.map((el) => (
+                      {content?.categories?.map((el) => (
                         <>
                           <li className="text-black text-base my-1 hover:transform hover:scale-110 hover:transition-transform hover:cursor-pointer">
                             {el}
@@ -114,7 +138,7 @@ function Navbar(props) {
                   <div className="flex flex-col">
                     <div className="text-2xl font-bold my-2">Themes</div>
                     <ul className="flex flex-col p-2">
-                      {result?.theme?.map((el) => (
+                      {content?.theme?.map((el) => (
                         <>
                           <li className="text-black text-base my-1  hover:transform hover:scale-110 hover:transition-transform hover:cursor-pointer">
                             {el.genre}
@@ -127,7 +151,7 @@ function Navbar(props) {
                   <div className="flex flex-col">
                     <div className="text-2xl font-bold my-2">Skin Tone</div>
                     <ul className="flex flex-col p-2">
-                      {result?.skinTone?.map((el) => (
+                      {content?.skinTone?.map((el) => (
                         <>
                           <li className="text-black text-base my-1 hover:transform hover:scale-110 hover:transition-transform hover:cursor-pointer">
                             {el?._id}
