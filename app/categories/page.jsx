@@ -46,6 +46,7 @@ function Categories() {
           width={1920}
           height={1080}
           className="rounded Portfolio_images"
+          blurDataURL={content?.secure_url}
         />
       </div>
       <div className="flex justify-center">
