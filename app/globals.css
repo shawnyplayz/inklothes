@@ -10,7 +10,9 @@
 .h-35rem{
   height: 35rem;
 }
-
+.bg-offWhite{
+  background: #F3F3F3;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

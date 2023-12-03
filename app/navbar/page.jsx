@@ -9,7 +9,6 @@ import { RxAvatar } from "react-icons/rx";
 import { AiOutlineDown, AiOutlineHeart } from "react-icons/ai";
 import { Button, Dropdown, Menu } from "antd";
 import "./navbar.css";
-import { useAPIStore } from "../../store/ApiData";
 
 function Navbar(props) {
   // const items = [

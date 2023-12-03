@@ -30,7 +30,7 @@ function Categories() {
     }
   };
   return (
-    <div>
+    <div className="bg-offWhite">
       <Navbar />
       <div className="w-full h-1/2 flex">
         <Image
@@ -49,17 +49,16 @@ function Categories() {
           blurDataURL={content?.secure_url}
         />
       </div>
-      <div className="flex justify-center">
+      <div className="grid grid-rows-2 items-center">
         <MidRiff />
-      </div>
+        <div class="grid grid-cols-6 gap-4 bg-offWhite">
+          <div class="col-span-1">
+            <Sorting />
+          </div>
 
-      <div class="grid grid-cols-6 gap-4">
-        <div class="bg-gray-200 p-4 col-span-1">
-          <Sorting />
-        </div>
-
-        <div class="bg-gray-300 p-4 col-span-5">
-          <Products />
+          <div class="p-4 col-span-5 bg-white">
+            <Products />
+          </div>
         </div>
       </div>
 
