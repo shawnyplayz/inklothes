@@ -13,6 +13,12 @@
 .bg-offWhite{
   background: #F3F3F3;
 }
+.sizeButton{
+  border: 2px solid black;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  border-radius: 10px;
+}
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;

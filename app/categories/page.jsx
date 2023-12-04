@@ -49,8 +49,10 @@ function Categories() {
           blurDataURL={content?.secure_url}
         />
       </div>
-      <div className="grid grid-rows-2 items-center">
-        <MidRiff />
+      <div className="flex flex-col">
+        <div className="my-8">
+          <MidRiff />
+        </div>
         <div class="grid grid-cols-6 gap-4 bg-offWhite">
           <div class="col-span-1">
             <Sorting />
@@ -61,7 +63,6 @@ function Categories() {
           </div>
         </div>
       </div>
-
       <Footer />
     </div>
   );
