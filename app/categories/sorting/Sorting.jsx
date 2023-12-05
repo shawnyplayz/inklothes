@@ -1,23 +1,91 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Checkbox, Divider, Select } from "antd";
 import { Slider, Switch } from "antd";
-
+import "./Sorting.css";
 const CheckboxGroup = Checkbox.Group;
 
 function Sorting() {
   const [checkedList, setCheckedList] = useState(null);
+  const [isFixed, setIsFixed] = useState(false);
+  const [content, setContent] = useState(null);
+  const [sortOptions, setSortOptions] = useState(null);
+  const [theme, setTheme] = useState([]);
+  const [size, setSize] = useState([]);
+  const [clothingType, setClothingType] = useState([]);
+  useEffect(() => {
+    getData();
+  }, []);
+  const getData = async () => {
+    let API = process.env.NEXT_PUBLIC_UAT_URL;
+    try {
+      await fetch(`${API}/catalogue`)
+        .then(function (response) {
+          // The response is a Response instance.
+          // You parse the data into a useable format using `.json()`
+          return response.json();
+        })
+        .then(function (data) {
+          // `data` is the parsed version of the JSON returned from the above endpoint.
+
+          setContent(data);
+          return data;
+        });
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
+  useEffect(() => {
+    let products = [];
+    let theme = [];
+    content?.clothingType?.map((el) => {
+      products.push(el?.clothingType);
+    });
+    content?.genre?.map((el) => {
+      theme.push(el?.genre);
+    });
+    setClothingType([...products]);
+    setTheme([...theme]);
+  }, [content]);
+
   const plainOptions = [
     "Relevance",
     "Most Bought",
-    "Low to high",
-    "High to Low",
+    "Low to high (Price)",
+    "High to Low (Price)",
   ];
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      // Adjust the value below based on when you want the switch to occur
+      const triggerScroll = 700;
+
+      if (scrollY > triggerScroll && !isFixed) {
+        setIsFixed(true);
+      } else if (scrollY <= triggerScroll && isFixed) {
+        setIsFixed(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      // Cleanup the event listener when the component unmounts
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isFixed]);
+
   const onChange = (list) => {
     setCheckedList(list);
   };
   return (
-    <div className="rounded-sm bg-white">
-      <div className="p-8">
+    <div
+      // className={`rounded-sm bg-white  your-component ${
+      //   isFixed ? "fixedSS" : ""
+      // }`}
+      className="rounded-sm bg-white"
+    >
+      <div className={`p-8`}>
         <div className="sorting">
           <h2 className="text-black font-bold text-2xl my-2">Sort By</h2>
           <div className="checkboxes flex flex-col">
@@ -40,7 +108,7 @@ function Sorting() {
           <Divider className="my-2" />
           <Select size="large" style={{ width: "100%" }} />
           <CheckboxGroup
-            options={plainOptions}
+            options={theme}
             value={checkedList}
             onChange={onChange}
             style={{ flexDirection: "column" }}
@@ -60,7 +128,7 @@ function Sorting() {
           <h2 className="text-black font-bold text-2xl mt-2">Products</h2>
           <Divider className="my-2" />
           <CheckboxGroup
-            options={plainOptions}
+            options={clothingType}
             value={checkedList}
             onChange={onChange}
             style={{ flexDirection: "column" }}

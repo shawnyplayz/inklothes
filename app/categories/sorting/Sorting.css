@@ -1,0 +1,10 @@
+.your-component {
+    transition: transform 0.3s ease-out; /* Adjust the duration and timing function as needed */
+  }
+  
+  .fixedSS {
+    position: fixed;
+    top: 0;
+    transform: translateY(0); /* Adjust this value based on your layout */
+  }
+  
