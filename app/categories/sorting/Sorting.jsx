@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Checkbox, Divider, Select } from "antd";
+import { Checkbox, Col, Divider, InputNumber, Row, Select } from "antd";
 import { Slider, Switch } from "antd";
 import "./Sorting.css";
 const CheckboxGroup = Checkbox.Group;
@@ -12,6 +12,7 @@ function Sorting() {
   const [theme, setTheme] = useState([]);
   const [size, setSize] = useState([]);
   const [clothingType, setClothingType] = useState([]);
+  const [price, setPrice] = useState(0);
   useEffect(() => {
     getData();
   }, []);
@@ -101,14 +102,44 @@ function Sorting() {
         <div className="Price">
           <h2 className="text-black font-bold text-2xl mt-2">Price</h2>
           <Divider className="my-2" />
-          <Slider defaultValue={30} range={true} disabled={false} />
+          <Slider
+            min={0}
+            max={2000}
+            dots
+            step={500}
+            onChange={(e) => setPrice(e)}
+            value={typeof price === "number" ? price : 0}
+            tooltip
+          />
+          {/* <Row>
+            <Col span={12}>
+              <Slider
+                min={0}
+                max={2000}
+                dots
+                step={500}
+                onChange={(e) => setPrice(e)}
+                value={typeof price === "number" ? price : 0}
+              />
+            </Col>
+            <Col span={4}>
+              <InputNumber
+                min={1}
+                max={2000}
+                style={{
+                  margin: "0 16px",
+                }}
+                value={price}
+                onChange={(e) => setPrice(e)}
+              />
+            </Col>
+          </Row> */}
         </div>
-        <div className="Theme">
-          <h2 className="text-black font-bold text-2xl mt-2">Theme</h2>
+        <div className="Products">
+          <h2 className="text-black font-bold text-2xl mt-2">Products</h2>
           <Divider className="my-2" />
-          <Select size="large" style={{ width: "100%" }} />
           <CheckboxGroup
-            options={theme}
+            options={clothingType}
             value={checkedList}
             onChange={onChange}
             style={{ flexDirection: "column" }}
@@ -124,11 +155,12 @@ function Sorting() {
             <button className="sizeButton">XL</button>
           </div>
         </div>
-        <div className="Products">
-          <h2 className="text-black font-bold text-2xl mt-2">Products</h2>
+        <div className="Theme">
+          <h2 className="text-black font-bold text-2xl mt-2">Theme</h2>
           <Divider className="my-2" />
+          <Select size="large" style={{ width: "100%" }} />
           <CheckboxGroup
-            options={clothingType}
+            options={theme}
             value={checkedList}
             onChange={onChange}
             style={{ flexDirection: "column" }}

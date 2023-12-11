@@ -213,6 +213,7 @@ function Navbar(props) {
               <li className="font-extrabold">
                 <Link
                   href={el.link}
+                  prefetch
                   className="block py-2 mx-1 text-2xl text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0  md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
                   aria-current="page"
                 >

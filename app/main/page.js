@@ -10,7 +10,7 @@ import Footer from "../footer/page";
 import { useAPIStore } from "../../store/ApiData";
 function Main() {
   const [content, setContent] = useState(null);
-  const { categoriesNav, addCategoriesNav } = useAPIStore();
+  const { addCategoriesNav } = useAPIStore();
   useEffect(() => {
     getData();
   }, []);
