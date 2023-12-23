@@ -53,12 +53,12 @@ function Categories() {
         <div className="my-8">
           <MidRiff />
         </div>
-        <div class="grid grid-cols-6 gap-4 bg-offWhite">
-          <div class="col-span-1">
+        <div className="grid grid-cols-6 gap-4 bg-offWhite">
+          <div className="col-span-1">
             <Sorting />
           </div>
 
-          <div class="p-4 col-span-5 bg-white">
+          <div className="p-4 col-span-5 bg-white">
             <Products />
           </div>
         </div>
